@@ -1,0 +1,15 @@
+<h1>Nuevo Rubro</h1>
+<%= form_with scope: @item, url: rubros_new_path do |f| %>
+    <p>
+    <label>Rubros</label> <br>
+    <%= f.text_field :nombre, class: "form-control" %><br>
+    <label> Es perecedero </label>
+    <%= f.check_box :perecedero,class:"form-check-label"  %>
+    </p>
+    <div class="alert alert-warning" role="alert">
+    <p>Si el item introducido no envia, significa que ya existe un item con el mismo nombre</p>
+    </div>
+    <%= f.submit "Enviar", disable_with: 'Enviando....',class: "btn btn-primary" %><br>
+    
+   <% end %>
+   

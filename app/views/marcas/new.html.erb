@@ -1,0 +1,18 @@
+<h1>Nueva Marca </h1>
+
+<%= form_with scope: @item, url: marcas_new_path do |f| %>
+   
+    <p>
+    <label>Nombre Marca</label> <br>
+    <%= f.text_field :nombre, class: "form-control" %>
+    </p>
+    <div class="alert alert-warning" role="alert">
+    <p>Si el item introducido no envia, significa que ya existe un item con el mismo nombre</p>
+    </div>
+    <%= f.submit "Enviar", disable_with: 'Enviando...',class: "btn btn-primary"  %>
+    
+    
+   <% end %>
+   
+   
+   

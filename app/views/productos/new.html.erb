@@ -1,0 +1,31 @@
+<h1>Formulario Productos Nuevos</h1>
+<%= form_with scope: @item, url: productos_new_post_path do |f| %>    
+    <p>
+ <label>Nombre</label > <br>
+ <%= f.text_field :nombre, class: "form-control" %>
+ </p>
+ <p>
+ <label>Cantidad Minima</label> <br>
+ <%= f.number_field :cant_min, class: "form-control"  %>
+ </p>
+ <p>
+ <label>Cantidad actual</label> <br>
+ <%= f.number_field :cant_act, class: "form-control"  %>
+ </p>
+ <p>
+ <label>precio</label> <br>
+ <%= f.number_field :precio, class: "form-control"  %>
+ </p>
+ <label> Activo </label>
+ <%= f.check_box :activo, class:"form-check-label" %>
+ <p>
+ <label>Marca</label> <br>
+ <%= f.collection_select(:marca_id, Marca.all, :id, :nombre, :prompt=>"Seleccione una marca", class: "form-control" ) %>
+ </p>
+ <p>
+ <label>Rubro</label> <br>
+ <%= f.collection_select(:rubro_id, Rubro.all, :id, :nombre,:prompt=>"Seleccione un rubro", class: "form-control" ) %>
+ </p>
+ <%= f.submit "Enviar", disable_with: 'Enviando....',class: "btn btn-primary" %><br>
+ <br>
+<% end %>

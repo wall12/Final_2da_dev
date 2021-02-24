@@ -1,0 +1,15 @@
+<h1>Editar datos de Rubros</h1>
+
+<%= form_with scope: @item, url: rubros_update_path ,method: :PUT do |f| %>
+    <%= f.hidden_field  :id %> 
+    <label>Rubros</label> <br>
+    <%= f.text_field :nombre, class: "form-control" %><br>
+    <label> Es perecedero </label>
+    <%= f.check_box :perecedero,class:"form-check-label"  %>
+    </p>
+    <div class="alert alert-warning" role="alert">
+    <p>Si el item introducido no envia, significa que ya existe un item con el mismo nombre</p>
+    </div>
+    <%= f.submit "Enviar", disable_with: 'Enviando....',class: "btn btn-primary" %><br>
+    
+   <% end %>

@@ -1,0 +1,42 @@
+<h1>Registros de Productos </h1>
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th> Cant_Minima </th>
+<th> Cant_Actual </th>
+<th> Precio </th>
+<th> Activo </th>
+<th> Marca </th>
+<th> Rubro </th>
+<% if user_signed_in? %>
+<th colspan="2"><a href="<%= productos_new_path %> " class="btn btn-primary" > Nuevo </a></th>
+<%end %>
+</tr>
+<% @lista.each do |item| %>
+<tr>
+<td><%= item.id %> </td>
+<td><%= item.nombre %></td>
+<td><%= item.cant_minima %></td>
+<td><%= item.cant_actual %></td>
+<td><%= item.precio %></td>
+<% if item.activo == true %>
+<td><span class="badge badge-pill badge-success"> Si </span> </td> 
+<% end %>
+<% if item.activo == false %> 
+<td><span class="badge badge-pill badge-danger">No</span></td> 
+<% end %>
+<td><%= item.marca.nombre %></td>
+<td><%= item.rubro.nombre %></td>
+<% if user_signed_in? %>
+<td><%= link_to 'Editar', productos_edit_path(item.id),class: "btn btn-secondary"  %></td>
+
+<td><%= link_to 'Borrar', productos_delete_path(item.id), method: :delete,class: "btn btn-danger"  %></td>
+<% end %>
+</tr>
+<% end %>
+</div>
+</thead>
+</table>

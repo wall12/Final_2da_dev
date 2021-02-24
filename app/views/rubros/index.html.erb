@@ -1,0 +1,32 @@
+<h1>Registros de Rubros</h1>
+
+<table class="table table-bordered">
+<thead class="thead-dark">
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Perecedero</th>
+<% if user_signed_in? %>
+<th colspan="2"><a href="<%= rubros_new_path %> "class="btn btn-primary" > Nuevo </a></th>
+<%end%>
+</tr>
+<% @lista.each do |item| %>
+<tr>
+<td><%= item.id %></td>
+<td><%= item.nombre %></td>
+<% if item.perecedero == true %>
+<td><span class="badge badge-pill badge-danger"> Si </span> </td> 
+<% end %>
+<% if item.perecedero == false %> 
+<td><span class="badge badge-pill badge-success">No</span></td> 
+<% end %>
+<% if user_signed_in? %>
+<td><%= link_to 'Editar', rubros_edit_path(item.id),class: "btn btn-secondary" %></td>
+
+<td><%= link_to 'Borrar', rubros_delete_path(item.id), method: :delete ,class: "btn btn-danger" %></td>
+<% end %>
+</tr>
+
+<% end %>
+</thead>
+</table>

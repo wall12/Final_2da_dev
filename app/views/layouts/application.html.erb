@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Segunda</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+  Productos
+  </a>
+  <ul class="navbar-nav">
+  <li class="nav-item "><%= link_to 'Marcas', marcas_path %> </li>
+  <li class="nav-item "><%= link_to 'Rubros', rubros_path %></li>
+  
+<% if current_user.nil? %>
+<li class="nav-item ">
+<%= link_to new_user_session_path, class: 'login-button' do %>Iniciar Sesion <% end %></li>
+<% else %>
+<li class="nav-item ">
+<%= link_to destroy_user_session_path, method: :delete do %> Cerrar Sesion <% end %></li>
+<% end %>
+  </ul>
+  </nav>
+    <% if user_signed_in? %>
+    Bienvenido <%= current_user.email %>
+    <% end %>
+  <%= yield %>
+    </div>
+  </body>
+</html>
